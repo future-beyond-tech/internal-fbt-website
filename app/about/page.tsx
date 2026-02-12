@@ -1,4 +1,11 @@
 import Container from "@/components/layout/Container";
+import { defaultMetadata } from "@/lib/seo";
+
+export const metadata = defaultMetadata(
+  "About",
+  "Learn about Future Beyond Technology's security-first engineering philosophy and long-term product mindset.",
+  "/about"
+);
 
 export default function AboutPage() {
     return (

@@ -1,44 +1,42 @@
 import "./globals.css";
-import { siteConfig } from "@/lib/siteConfig";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import { defaultMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
 
-export const metadata = {
-    title: siteConfig.name,
-    description: siteConfig.description,
-};
+export const metadata: Metadata = defaultMetadata();
 
 export default function RootLayout({
-                                       children,
-                                   }: {
-    children: React.ReactNode;
+  children,
+}: {
+  children: React.ReactNode;
 }) {
-    return (
-        <html lang="en">
-        <head>
-            {/* Google Analytics */}
-            <Script
-                src="https://www.googletagmanager.com/gtag/js?id=G-3BTYK7B86L"
-                strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-                {`
+  return (
+    <html lang="en">
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-3BTYK7B86L"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-3BTYK7B86L');
           `}
-            </Script>
-        </head>
+        </Script>
+      </head>
 
-        <body className="bg-background text-foreground antialiased min-h-screen flex flex-col">
+      <body className="bg-background text-foreground antialiased min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Analytics />
         <Footer />
-        </body>
-        </html>
-    );
+      </body>
+    </html>
+  );
 }

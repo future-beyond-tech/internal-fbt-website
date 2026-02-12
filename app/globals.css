@@ -68,7 +68,11 @@ p {
   line-height: 1.7;
 }
 
-/* Remove default focus outline; use Tailwind focus-visible:ring-* on interactive elements */
-:focus {
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
   outline: none;
 }

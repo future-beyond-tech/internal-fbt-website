@@ -3,8 +3,9 @@ import Container from "@/components/layout/Container";
 import ContactForm from "./ContactForm";
 
 export const metadata = defaultMetadata(
-    "Contact",
-    "Secure, scalable, and intelligent software engineering for startups and security-critical organizations."
+  "Contact",
+  "Secure, scalable, and intelligent software engineering for startups and security-critical organizations.",
+  "/contact"
 );
 
 export default function ContactPage() {

@@ -2,8 +2,9 @@ import Container from "@/components/layout/Container";
 import { defaultMetadata } from "@/lib/seo";
 
 export const metadata = defaultMetadata(
-    "How We Work",
-    "A security-first, architecture-driven approach to building reliable, enterprise-grade software systems."
+  "How We Work",
+  "A security-first, architecture-driven approach to building reliable, enterprise-grade software systems.",
+  "/how-we-work"
 );
 
 const principles = [

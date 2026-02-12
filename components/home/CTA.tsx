@@ -7,7 +7,7 @@ export default function CTA() {
             <Container>
                 <div className="text-center">
                     <h2 id="cta-heading" className="text-xl font-semibold text-white sm:text-2xl">
-                        Let's build technology that lasts.
+                        Let&rsquo;s build technology that lasts.
                     </h2>
                     <p className="mt-4 max-w-xl mx-auto text-sm text-slate-300 dark:text-slate-400 sm:text-base">
                         Start a conversation with FBT — thoughtful, practical, and

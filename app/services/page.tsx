@@ -1,9 +1,10 @@
 import Container from "@/components/layout/Container";
-import {defaultMetadata} from "@/lib/seo";
+import { defaultMetadata } from "@/lib/seo";
 
 export const metadata = defaultMetadata(
-    "Services",
-    "Secure, scalable, and intelligent software engineering for startups and security-critical organizations."
+  "Services",
+  "Secure, scalable, and intelligent software engineering for startups and security-critical organizations.",
+  "/services"
 );
 export default function ServicesPage() {
     return (
