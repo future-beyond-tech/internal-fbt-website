@@ -226,7 +226,7 @@ export default function PgSaasPage() {
             </div>
             <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
               <Image
-                src="/products/pgsaas/dashboard-wireframe.svg"
+                src="/products/pg-management/dashboard-wireframe.svg"
                 alt="FBT PG SaaS dashboard wireframe"
                 width={1300}
                 height={850}
@@ -332,7 +332,7 @@ export default function PgSaasPage() {
             </h2>
             <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
               <Image
-                src="/products/pgsaas/property-hierarchy.svg"
+                src="/products/pg-management/property-hierarchy.svg"
                 alt="Property hierarchy visualization from property to bed"
                 width={1400}
                 height={500}
@@ -475,7 +475,7 @@ export default function PgSaasPage() {
               <div className="space-y-6">
                 <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
                   <Image
-                    src="/products/pgsaas/architecture-clean-cqrs.svg"
+                    src="/products/pg-management/architecture-clean-cqrs.svg"
                     alt="Clean Architecture and CQRS diagram for PG SaaS platform"
                     width={1200}
                     height={1000}
@@ -515,7 +515,7 @@ export default function PgSaasPage() {
 
               <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
                 <Image
-                  src="/products/pgsaas/roadmap-timeline.svg"
+                  src="/products/pg-management/roadmap-timeline.svg"
                   alt="PG SaaS development roadmap timeline"
                   width={1200}
                   height={700}

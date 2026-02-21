@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 
@@ -14,134 +14,239 @@ declare global {
   }
 }
 
-const HERO_VARIANT_KEY = "fbt_home_hero_variant";
-const HERO_VARIANTS = {
-  A: {
-    heading: "We Build Enterprise SaaS That Lasts",
-    subheading:
-      "Product engineering studio behind two mission-critical platforms. We ship multi-tenant, security-first systems and help you do the same.",
-  },
-  B: {
-    heading: "We Build and Ship Enterprise SaaS",
-    subheading:
-      "Product engineering studio behind two mission-critical platforms. We build multi-tenant, security-first systems and help your team deliver with the same discipline.",
-  },
-} as const;
-
 export default function Hero() {
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const subheadingRef = useRef<HTMLParagraphElement>(null);
-
   useEffect(() => {
-    if (typeof window === "undefined") {
+    if (typeof window === "undefined" || typeof window.gtag !== "function") {
       return;
     }
 
-    const saved = window.localStorage.getItem(HERO_VARIANT_KEY);
-    const resolved: "A" | "B" =
-      saved === "A" || saved === "B"
-        ? saved
-        : Math.random() > 0.5
-          ? "A"
-          : "B";
-
-    window.localStorage.setItem(HERO_VARIANT_KEY, resolved);
-
-    const copy = HERO_VARIANTS[resolved];
-    if (headingRef.current) {
-      headingRef.current.textContent = copy.heading;
-    }
-    if (subheadingRef.current) {
-      subheadingRef.current.textContent = copy.subheading;
-    }
-
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "hero_variant_view", { variant: resolved });
-    }
+    window.gtag("event", "quote_viewed", {
+      quote_id: "theyre_architected_hybrid",
+      page_path: "/",
+    });
   }, []);
 
   return (
     <section
       id="home-hero"
-      className="relative overflow-hidden py-20 sm:py-28 lg:py-32"
+      className="relative isolate flex min-h-screen flex-col justify-center overflow-hidden bg-slate-950 py-20 px-4 sm:px-6 lg:px-8 sm:py-24 lg:py-28"
       aria-labelledby="hero-heading"
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-slate-100/90 via-white to-white dark:from-slate-900 dark:via-slate-950/90 dark:to-slate-950"
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950/30"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-12 -z-10 h-64 w-[85%] -translate-x-1/2 rounded-full bg-sky-100/60 blur-3xl dark:bg-sky-950/40"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
       />
 
       <Container>
-        <div className="text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-600 dark:text-slate-400 sm:text-sm">
+        <div className="relative mx-auto w-full max-w-6xl">
+          <p className="mb-4 text-center text-xs font-medium uppercase tracking-[0.2em] text-slate-400 sm:text-sm">
             Future Beyond Technology
           </p>
-          <h1
-            id="hero-heading"
-            ref={headingRef}
-            className="mx-auto mt-4 max-w-4xl text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl md:text-5xl lg:text-6xl"
-          >
-            {HERO_VARIANTS.A.heading}
-          </h1>
 
-          <p
-            ref={subheadingRef}
-            className="mx-auto mt-5 max-w-3xl text-base text-slate-700 dark:text-slate-300 sm:mt-7 sm:text-lg"
-          >
-            {HERO_VARIANTS.A.subheading}
-          </p>
+          {/* LAYER 1: THE HOOK */}
+          <div className="mb-6 text-center">
+            <h1
+              id="hero-heading"
+              className="font-tiempos text-5xl font-bold tracking-tight text-emerald-400 sm:text-6xl md:text-7xl lg:text-8xl"
+            >
+              <span className="block">Ideas aren&apos;t accidental.</span>
+              <span className="block">They&apos;re architected.</span>
+            </h1>
+          </div>
 
-          <div className="mt-10 flex flex-col gap-3 sm:mt-12 sm:flex-row sm:justify-center sm:gap-4">
+          {/* LAYER 2: THE CLARITY */}
+          <div className="mb-12 text-center">
+            <p className="mx-auto max-w-3xl text-xl leading-relaxed text-slate-300 sm:text-2xl md:text-3xl">
+              Enterprise SaaS &amp; security frameworks{" "}
+              <span className="font-medium text-white">
+                built for long-term scale.
+              </span>
+            </p>
+
+            <div className="mt-4 flex items-center justify-center gap-3 text-sm text-slate-500">
+              <div className="h-px w-8 bg-slate-700" />
+              <span>Feroze Basha, Founder</span>
+              <div className="h-px w-8 bg-slate-700" />
+            </div>
+          </div>
+
+          {/* LAYER 3: THE PROOF (Product Cards) */}
+          <div className="mx-auto mb-12 grid max-w-4xl gap-6 md:grid-cols-2">
+            {/* FBT PG SaaS */}
+            <div className="group rounded-xl border border-slate-800 bg-slate-900/50 p-6 backdrop-blur transition-colors hover:border-emerald-500/50">
+              <div className="mb-4 flex items-start justify-between">
+                <div>
+                  <h3 className="mb-1 text-lg font-bold text-white">
+                    FBT PG SaaS
+                  </h3>
+                  <p className="text-sm text-slate-400">
+                    PG Management Platform
+                  </p>
+                </div>
+                <span className="rounded-full bg-emerald-500/10 px-2 py-1 text-xs font-medium text-emerald-400">
+                  Beta Q3 2026
+                </span>
+              </div>
+
+              <div className="mb-6 space-y-2">
+                <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  Multi-tenant architecture
+                </div>
+                <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  Event-driven billing
+                </div>
+                <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  50+ waitlist
+                </div>
+              </div>
+
+              <Link
+                href="/products/pg-saas"
+                className="inline-flex items-center text-sm font-medium text-emerald-400 transition-colors hover:text-emerald-300 [&>svg]:group-hover:translate-x-1"
+              >
+                Explore
+                <svg
+                  className="ml-1 h-4 w-4 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Vulnerability Assessment AI */}
+            <div className="group rounded-xl border border-slate-800 bg-slate-900/50 p-6 backdrop-blur transition-colors hover:border-emerald-500/50">
+              <div className="mb-4 flex items-start justify-between">
+                <div>
+                  <h3 className="mb-1 text-lg font-bold text-white">
+                    Vulnerability Assessment AI
+                  </h3>
+                  <p className="text-sm text-slate-400">
+                    Security Automation Platform
+                  </p>
+                </div>
+                <span className="rounded-full bg-blue-500/10 px-2 py-1 text-xs font-medium text-blue-400">
+                  Aug 2026
+                </span>
+              </div>
+
+              <div className="mb-6 space-y-2">
+                <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <div className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                  AI-powered prioritization
+                </div>
+                <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <div className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                  Microservices architecture
+                </div>
+                <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <div className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                  Early access open
+                </div>
+              </div>
+
+              <Link
+                href="/products/vulnerability-ai"
+                className="inline-flex items-center text-sm font-medium text-blue-400 transition-colors hover:text-blue-300 [&>svg]:group-hover:translate-x-1"
+              >
+                Get Early Access
+                <svg
+                  className="ml-1 h-4 w-4 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </div>
+
+          {/* CTAs */}
+          <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/products"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800 focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-200 dark:focus-visible:ring-slate-50 dark:focus-visible:ring-offset-slate-900"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-lg bg-emerald-500 px-8 py-3 text-base font-semibold text-white transition-colors hover:bg-emerald-600 focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
             >
-              Explore Our Products
+              Explore All Products
             </Link>
             <Link
               href="/contact"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-slate-600 dark:hover:bg-slate-800 dark:focus-visible:ring-slate-50 dark:focus-visible:ring-offset-slate-900"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-lg border border-slate-600 bg-transparent px-8 py-3 text-base font-semibold text-white transition-colors hover:bg-slate-800 focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
             >
-              Hire Us For Your Build
+              Hire FBT For Your Build
             </Link>
           </div>
 
-          <div className="mt-10 grid gap-4 text-left sm:mt-12 md:grid-cols-2">
-            <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-                FBT PG SaaS
-              </h2>
-              <p className="mt-1 text-sm font-medium text-slate-700 dark:text-slate-300">
-                PG Management
-              </p>
-              <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
-                Beta: Q3 2026
-              </p>
-              <p className="mt-1 text-sm text-emerald-700 dark:text-emerald-400">
-                50+ waitlist
-              </p>
-            </article>
-            <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-                Vulnerability Assessment AI
-              </h2>
-              <p className="mt-1 text-sm font-medium text-slate-700 dark:text-slate-300">
-                Security Automation
-              </p>
-              <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
-                Release: Aug 2026
-              </p>
-              <p className="mt-1 text-sm text-emerald-700 dark:text-emerald-400">
-                Early access open
-              </p>
-            </article>
+          {/* Trust indicators */}
+          <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-500">
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+              <span>3 Products in Development</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div
+                className="h-2 w-2 animate-pulse rounded-full bg-emerald-400 [animation-delay:75ms]"
+                aria-hidden
+              />
+              <span>Clean Architecture Specialists</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div
+                className="h-2 w-2 animate-pulse rounded-full bg-emerald-400 [animation-delay:150ms]"
+                aria-hidden
+              />
+              <span>Security-First Engineering</span>
+            </div>
           </div>
         </div>
       </Container>
+
+      {/* Scroll indicator */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-slate-600"
+      >
+        <svg
+          className="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          />
+        </svg>
+      </div>
     </section>
   );
 }

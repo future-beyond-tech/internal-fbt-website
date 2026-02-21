@@ -42,6 +42,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.font-tiempos {
+  font-family: "Tiempos Headline", "Iowan Old Style", "Georgia", "Times New Roman", serif;
+}
+
 ::selection {
   background: #e2e8f0;
   color: #0f172a;
