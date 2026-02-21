@@ -14,24 +14,41 @@ import BuiltByTrustBar from "@/components/home/BuiltByTrustBar";
 import { defaultMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-const homeTitle = "Future Beyond Tech | We Build Enterprise SaaS That Lasts";
+const homeTitle =
+  "They're Architected | FBT - Enterprise SaaS & Security";
 const homeDescription =
-  "Product engineering studio behind enterprise SaaS platforms and consulting builds. We ship multi-tenant, security-first systems and help teams do the same.";
+  "Enterprise SaaS & security frameworks built for long-term scale. Clean Architecture, multi-tenant systems, and security-first engineering by FBT.";
 const homeBaseMetadata = defaultMetadata(undefined, homeDescription, "/");
 
 export const metadata: Metadata = {
   ...homeBaseMetadata,
   title: homeTitle,
   description: homeDescription,
+  keywords: [
+    "enterprise SaaS",
+    "Clean Architecture",
+    "security frameworks",
+    "multi-tenant",
+    "FBT",
+  ],
   openGraph: {
     ...homeBaseMetadata.openGraph,
     title: homeTitle,
     description: homeDescription,
+    images: [
+      {
+        url: "/og-engineering-authority.svg",
+        width: 1200,
+        height: 630,
+        alt: "Ideas aren't accidental. They're architected. Enterprise SaaS & security frameworks built for long-term scale.",
+      },
+    ],
   },
   twitter: {
     ...homeBaseMetadata.twitter,
     title: homeTitle,
     description: homeDescription,
+    images: ["/og-engineering-authority.svg"],
   },
 };
 

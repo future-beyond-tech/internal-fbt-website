@@ -143,6 +143,19 @@ export default function Footer() {
               reserved.
             </p>
           </div>
+
+          <div className="mt-8 border-t border-slate-200 pt-6 text-center dark:border-slate-800">
+            <p className="font-tiempos text-base italic text-slate-500 dark:text-slate-400 sm:text-lg">
+              &quot;Ideas don&apos;t fall into place&mdash;{" "}
+              <span className="text-emerald-600 dark:text-emerald-400">
+                they&apos;re architected.
+              </span>
+              &quot;
+            </p>
+            <p className="mt-2 text-xs text-slate-500 dark:text-slate-500 sm:text-sm">
+              Built with precision. Designed for beyond.
+            </p>
+          </div>
         </div>
       </Container>
     </footer>
