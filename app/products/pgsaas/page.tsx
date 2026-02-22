@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 import TrackedCtaLink from "@/components/analytics/TrackedCtaLink";
+import TrackedExternalLink from "@/components/TrackedExternalLink";
 import { defaultMetadata } from "@/lib/seo";
+import { rentFlowOfficialUrl } from "@/lib/siteConfig";
 import PgSaasWaitlistForm from "./PgSaasWaitlistForm";
 import PgSaasAnalytics from "./PgSaasAnalytics";
 
@@ -147,8 +149,8 @@ const faqItems = [
 ] as const;
 
 export const metadata = defaultMetadata(
-  "FBT PG SaaS Platform | Enterprise Multi-Tenant PG Management Software",
-  "Enterprise-grade SaaS platform for PG owners and coliving chains. Automated rent, power billing, tenant lifecycle management. Built with Clean Architecture, CQRS, multi-tenancy. Beta opening Q3 2026.",
+  "RentFlow | Enterprise Multi-Tenant Rent Management Software",
+  "RentFlow official site: rentflow.in. Enterprise-grade SaaS for PG owners and coliving chains. Automated rent, power billing, tenant lifecycle. Early access and investor info at rentflow.in. Built with Clean Architecture, CQRS, multi-tenancy. Beta Q3 2026.",
   "/products/pg-management"
 );
 
@@ -162,20 +164,21 @@ const pgSaasSchema = {
     },
     {
       "@type": "SoftwareApplication",
-      name: "FBT PG SaaS Platform",
+      name: "RentFlow",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web",
       description:
-        "Enterprise-grade multi-tenant PG management platform for rent, power billing, and tenant lifecycle automation.",
+        "Enterprise-grade multi-tenant rent management platform for rent, power billing, and tenant lifecycle automation.",
       publisher: {
         "@type": "Organization",
         name: "FBT — Future Beyond Technology",
       },
       url: "https://futurebeyondtech.com/products/pg-management",
+      sameAs: "https://rentflow.in",
     },
     {
       "@type": "Offer",
-      name: "FBT PG SaaS Early Access",
+      name: "RentFlow Early Access",
       price: "0",
       priceCurrency: "USD",
       availability: "https://schema.org/PreOrder",
@@ -193,6 +196,47 @@ export default function PgSaasPage() {
       <PgSaasAnalytics />
       <Container>
         <div className="mx-auto max-w-6xl space-y-20">
+          <section
+            aria-labelledby="rentflow-official-heading"
+            className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-5 dark:border-emerald-800 dark:bg-emerald-950/40 sm:p-6"
+          >
+            <h2
+              id="rentflow-official-heading"
+              className="text-lg font-semibold text-emerald-900 dark:text-emerald-100 sm:text-xl"
+            >
+              RentFlow now has an official site
+            </h2>
+            <p className="mt-2 text-sm text-emerald-800 dark:text-emerald-200 sm:text-base">
+              Know more about the product, join early access, or explore investor opportunities—all in one place.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <TrackedExternalLink
+                href={rentFlowOfficialUrl}
+                className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-emerald-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-700"
+                eventName="rentflow_official_click"
+                eventParams={{ cta: "know_more", location: "product_banner" }}
+              >
+                Visit RentFlow.in →
+              </TrackedExternalLink>
+              <TrackedExternalLink
+                href={`${rentFlowOfficialUrl}#early-access`}
+                className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-emerald-600 px-5 py-2.5 text-sm font-semibold text-emerald-800 transition-colors hover:bg-emerald-100 dark:border-emerald-500 dark:text-emerald-200 dark:hover:bg-emerald-900/50"
+                eventName="rentflow_official_click"
+                eventParams={{ cta: "early_access", location: "product_banner" }}
+              >
+                Early Access
+              </TrackedExternalLink>
+              <TrackedExternalLink
+                href={`${rentFlowOfficialUrl}#investors`}
+                className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-emerald-600 px-5 py-2.5 text-sm font-semibold text-emerald-800 transition-colors hover:bg-emerald-100 dark:border-emerald-500 dark:text-emerald-200 dark:hover:bg-emerald-900/50"
+                eventName="rentflow_official_click"
+                eventParams={{ cta: "investors", location: "product_banner" }}
+              >
+                Become an Investor
+              </TrackedExternalLink>
+            </div>
+          </section>
+
           <header className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center">
             <div>
               <p className="inline-flex rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-800 dark:border-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
@@ -202,20 +246,28 @@ export default function PgSaasPage() {
                 id="pgsaas-heading"
                 className="mt-5 text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl"
               >
-                Enterprise-Grade PG Management, Built for Scale
+                Enterprise-Grade RentFlow, Built for Scale
               </h1>
               <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-400 sm:text-lg">
                 Multi-tenant SaaS platform automating rent, power billing, and
                 tenant lifecycle for PG owners and coliving chains. From single
                 property to 100+ locations.
               </p>
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="#early-access"
                   className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-200"
                 >
                   Join Early Access Waitlist
                 </Link>
+                <TrackedExternalLink
+                  href={rentFlowOfficialUrl}
+                  className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600"
+                  eventName="rentflow_official_click"
+                  eventParams={{ cta: "header", location: "product_page" }}
+                >
+                  Official site: RentFlow.in →
+                </TrackedExternalLink>
                 <Link
                   href="#technical-architecture"
                   className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:border-slate-600 dark:hover:bg-slate-800"
@@ -227,7 +279,7 @@ export default function PgSaasPage() {
             <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
               <Image
                 src="/products/pg-management/dashboard-wireframe.svg"
-                alt="FBT PG SaaS dashboard wireframe"
+                alt="RentFlow dashboard wireframe"
                 width={1300}
                 height={850}
                 className="h-auto w-full"
@@ -255,7 +307,7 @@ export default function PgSaasPage() {
               id="problem-statement"
               className="text-2xl font-semibold text-slate-900 dark:text-slate-50 sm:text-3xl"
             >
-              Why PG Management Needs a SaaS Revolution
+              Why RentFlow: A SaaS Revolution
             </h2>
 
             <div className="hidden overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 md:block">
@@ -476,7 +528,7 @@ export default function PgSaasPage() {
                 <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
                   <Image
                     src="/products/pg-management/architecture-clean-cqrs.svg"
-                    alt="Clean Architecture and CQRS diagram for PG SaaS platform"
+                    alt="Clean Architecture and CQRS diagram for RentFlow platform"
                     width={1200}
                     height={1000}
                     className="h-auto w-full"
@@ -516,7 +568,7 @@ export default function PgSaasPage() {
               <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
                 <Image
                   src="/products/pg-management/roadmap-timeline.svg"
-                  alt="PG SaaS development roadmap timeline"
+                  alt="RentFlow development roadmap timeline"
                   width={1200}
                   height={700}
                   className="h-auto w-full"

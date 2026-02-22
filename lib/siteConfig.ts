@@ -6,3 +6,6 @@ export const siteConfig = {
   url: "https://futurebeyondtech.com",
   lastModified: "2026-02-12T00:00:00.000Z",
 };
+
+/** RentFlow official product site — know more, early access, investor inquiries */
+export const rentFlowOfficialUrl = "https://rentflow.in";

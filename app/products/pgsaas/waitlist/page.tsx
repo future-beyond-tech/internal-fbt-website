@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Container from "@/components/layout/Container";
+import TrackedExternalLink from "@/components/TrackedExternalLink";
 import { defaultMetadata } from "@/lib/seo";
+import { rentFlowOfficialUrl } from "@/lib/siteConfig";
 
 export const metadata = defaultMetadata(
-  "You're on the PG SaaS Waitlist",
-  "Confirmation page for FBT PG SaaS early access waitlist.",
+  "You're on the RentFlow Waitlist",
+  "Confirmation page for RentFlow early access waitlist. Visit rentflow.in for more.",
   "/products/pg-management/waitlist"
 );
 
@@ -28,7 +30,15 @@ export default function PgSaasWaitlistConfirmationPage() {
             benefits first.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <TrackedExternalLink
+              href={rentFlowOfficialUrl}
+              className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-emerald-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600"
+              eventName="rentflow_official_click"
+              eventParams={{ location: "waitlist_confirmation" }}
+            >
+              Visit RentFlow.in →
+            </TrackedExternalLink>
             <Link
               href="/products/pg-management"
               className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"

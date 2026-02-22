@@ -3,6 +3,8 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
+import TrackedExternalLink from "@/components/TrackedExternalLink";
+import { rentFlowOfficialUrl } from "@/lib/siteConfig";
 
 declare global {
   interface Window {
@@ -81,15 +83,15 @@ export default function Hero() {
 
           {/* LAYER 3: THE PROOF (Product Cards) */}
           <div className="mx-auto mb-12 grid max-w-4xl gap-6 md:grid-cols-2">
-            {/* FBT PG SaaS */}
+            {/* RentFlow */}
             <div className="group rounded-xl border border-slate-800 bg-slate-900/50 p-6 backdrop-blur transition-colors hover:border-emerald-500/50">
               <div className="mb-4 flex items-start justify-between">
                 <div>
                   <h3 className="mb-1 text-lg font-bold text-white">
-                    FBT PG SaaS
+                    RentFlow
                   </h3>
                   <p className="text-sm text-slate-400">
-                    PG Management Platform
+                    RentFlow Platform
                   </p>
                 </div>
                 <span className="rounded-full bg-emerald-500/10 px-2 py-1 text-xs font-medium text-emerald-400">
@@ -108,30 +110,32 @@ export default function Hero() {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
                   <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  50+ waitlist
+                  50+ waitlist · Official site: rentflow.in
                 </div>
               </div>
 
-              <Link
-                href="/products/pg-saas"
-                className="inline-flex items-center text-sm font-medium text-emerald-400 transition-colors hover:text-emerald-300 [&>svg]:group-hover:translate-x-1"
-              >
-                Explore
-                <svg
-                  className="ml-1 h-4 w-4 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+              <div className="flex flex-wrap gap-3">
+                <TrackedExternalLink
+                  href={rentFlowOfficialUrl}
+                  className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-emerald-400 [&>svg]:group-hover:translate-x-1"
+                  eventName="rentflow_official_click"
+                  eventParams={{ cta: "hero_primary", location: "hero" }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </Link>
+                  Visit RentFlow.in
+                  <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </TrackedExternalLink>
+                <Link
+                  href="/products/pg-saas"
+                  className="inline-flex min-h-[44px] items-center text-sm font-medium text-emerald-400 transition-colors hover:text-emerald-300 [&>svg]:group-hover:translate-x-1"
+                >
+                  Our build
+                  <svg className="ml-1 h-4 w-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+              </div>
             </div>
 
             {/* Vulnerability Assessment AI */}

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Container from "@/components/layout/Container";
+import TrackedExternalLink from "@/components/TrackedExternalLink";
+import { rentFlowOfficialUrl } from "@/lib/siteConfig";
 
 export default function FeaturedProduct() {
   return (
@@ -26,14 +28,22 @@ export default function FeaturedProduct() {
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <article className="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-800/50">
               <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100 sm:text-lg">
-                🏢 FBT PG SaaS Platform
+                🏢 RentFlow
               </h3>
               <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
-                Multi-tenant PG management for rent, power billing, and tenant lifecycle.
+                RentFlow: multi-tenant management for rent, power billing, and tenant lifecycle.
               </p>
               <p className="mt-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
                 In Beta (Q3 2026)
               </p>
+              <TrackedExternalLink
+                href={rentFlowOfficialUrl}
+                className="mt-3 inline-flex min-h-[40px] items-center text-sm font-semibold text-emerald-700 hover:underline dark:text-emerald-400"
+                eventName="rentflow_official_click"
+                eventParams={{ location: "featured_product" }}
+              >
+                Visit RentFlow.in →
+              </TrackedExternalLink>
             </article>
 
             <article className="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-800/50">

@@ -4,11 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Container from "./Container";
+import TrackedExternalLink from "@/components/TrackedExternalLink";
+import { rentFlowOfficialUrl } from "@/lib/siteConfig";
 
 type NavLinkItem = {
   name: string;
   href: string;
   description?: string;
+  officialSiteUrl?: string;
 };
 
 type NavGroup = {
@@ -31,9 +34,10 @@ const navGroups: NavGroup[] = [
         description: "Enterprise auth architecture",
       },
       {
-        name: "PG Management SaaS",
+        name: "RentFlow",
         href: "/products/pg-management",
-        description: "Enterprise PG operations platform",
+        description: "Official site: rentflow.in",
+        officialSiteUrl: rentFlowOfficialUrl,
       },
       {
         name: "Vulnerability Assessment AI",
@@ -193,30 +197,71 @@ export default function Navbar() {
                     }`}
                   >
                     <div className="overflow-y-auto overscroll-contain p-3 [scrollbar-gutter:stable]">
-                    {group.items.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => {
-                          setIsMenuOpen(false);
-                          setOpenDesktopGroup(null);
-                        }}
-                        className={`block rounded-lg p-3 transition-colors focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-slate-50 ${
-                          pathname.startsWith(item.href)
-                            ? "border border-slate-300 bg-slate-100 dark:border-slate-600 dark:bg-slate-800"
-                            : "border border-transparent hover:border-slate-300 hover:bg-slate-50 dark:hover:border-slate-600 dark:hover:bg-slate-800"
-                        }`}
-                      >
-                        <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                          {item.name}
-                        </p>
-                        {item.description && (
-                          <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
-                            {item.description}
+                    {group.items.map((item) =>
+                      item.officialSiteUrl ? (
+                        <div
+                          key={item.name}
+                          className={`rounded-lg border p-3 ${
+                            pathname.startsWith(item.href)
+                              ? "border-slate-300 bg-slate-100 dark:border-slate-600 dark:bg-slate-800"
+                              : "border-transparent hover:border-slate-300 hover:bg-slate-50 dark:hover:border-slate-600 dark:hover:bg-slate-800"
+                          }`}
+                        >
+                          <Link
+                            href={item.href}
+                            onClick={() => {
+                              setIsMenuOpen(false);
+                              setOpenDesktopGroup(null);
+                            }}
+                            className="block focus-visible:rounded focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-slate-50"
+                          >
+                            <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                              {item.name}
+                            </p>
+                            {item.description && (
+                              <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
+                                {item.description}
+                              </p>
+                            )}
+                          </Link>
+                          <TrackedExternalLink
+                            href={item.officialSiteUrl}
+                            onClick={() => {
+                              setIsMenuOpen(false);
+                              setOpenDesktopGroup(null);
+                            }}
+                            className="mt-2 inline-block text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:underline"
+                            eventName="rentflow_official_click"
+                            eventParams={{ location: "navbar_desktop" }}
+                          >
+                            Visit RentFlow.in →
+                          </TrackedExternalLink>
+                        </div>
+                      ) : (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          onClick={() => {
+                            setIsMenuOpen(false);
+                            setOpenDesktopGroup(null);
+                          }}
+                          className={`block rounded-lg p-3 transition-colors focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-slate-50 ${
+                            pathname.startsWith(item.href)
+                              ? "border border-slate-300 bg-slate-100 dark:border-slate-600 dark:bg-slate-800"
+                              : "border border-transparent hover:border-slate-300 hover:bg-slate-50 dark:hover:border-slate-600 dark:hover:bg-slate-800"
+                          }`}
+                        >
+                          <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                            {item.name}
                           </p>
-                        )}
-                      </Link>
-                    ))}
+                          {item.description && (
+                            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
+                              {item.description}
+                            </p>
+                          )}
+                        </Link>
+                      )
+                    )}
                     </div>
                   </div>
                 </div>
@@ -268,18 +313,30 @@ export default function Navbar() {
                   {group.items.map((item) => {
                     const isActive = pathname.startsWith(item.href);
                     return (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className={`mt-2 flex min-h-[48px] items-center rounded-md px-3 py-2 text-base font-medium transition-colors focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-slate-50 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 ${
-                          isActive
-                            ? "bg-slate-100 text-slate-900 dark:bg-slate-700 dark:text-slate-100"
-                            : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
-                        }`}
-                      >
-                        {item.name}
-                      </Link>
+                      <div key={item.name} className="mt-2">
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={`flex min-h-[48px] items-center rounded-md px-3 py-2 text-base font-medium transition-colors focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-slate-50 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 ${
+                            isActive
+                              ? "bg-slate-100 text-slate-900 dark:bg-slate-700 dark:text-slate-100"
+                              : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
+                          }`}
+                        >
+                          {item.name}
+                        </Link>
+                        {"officialSiteUrl" in item && item.officialSiteUrl && (
+                          <TrackedExternalLink
+                            href={item.officialSiteUrl}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="ml-3 inline-flex min-h-[44px] items-center text-sm font-medium text-emerald-600 dark:text-emerald-400"
+                            eventName="rentflow_official_click"
+                            eventParams={{ location: "navbar_mobile" }}
+                          >
+                            RentFlow.in →
+                          </TrackedExternalLink>
+                        )}
+                      </div>
                     );
                   })}
                 </div>

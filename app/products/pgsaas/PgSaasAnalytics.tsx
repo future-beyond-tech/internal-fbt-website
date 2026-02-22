@@ -20,7 +20,7 @@ export default function PgSaasAnalytics() {
 
     window.gtag("event", "page_view", {
       page_path: "/products/pg-management",
-      page_title: "FBT PG SaaS Platform",
+      page_title: "RentFlow",
     });
   }, []);
 
