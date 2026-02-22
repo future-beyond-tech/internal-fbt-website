@@ -2,11 +2,13 @@ import Link from "next/link";
 import Container from "@/components/layout/Container";
 import PageViewEvent from "@/components/analytics/PageViewEvent";
 import TrackedCtaLink from "@/components/analytics/TrackedCtaLink";
+import TrackedExternalLink from "@/components/TrackedExternalLink";
 import { defaultMetadata } from "@/lib/seo";
+import { rentFlowOfficialUrl } from "@/lib/siteConfig";
 
 export const metadata = defaultMetadata(
   "FBT Products | Enterprise SaaS Platforms Built With Clean Architecture",
-  "Explore FBT's product studio offerings: ZAuthSecurity architecture services, PG management SaaS (beta Q3 2026), and AI vulnerability assessment (release Aug 2026).",
+  "Explore FBT's product studio: ZAuthSecurity, RentFlow (official site rentflow.in — early access & investors), and AI vulnerability assessment. RentFlow beta Q3 2026.",
   "/products"
 );
 
@@ -74,10 +76,10 @@ export default function ProductsPage() {
 
             <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-8">
               <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                🏢 FBT PG SaaS Platform
+                🏢 RentFlow
               </p>
               <h2 className="mt-2 text-xl font-semibold text-slate-900 dark:text-slate-100 sm:text-2xl">
-                Multi-Tenant PG Management
+                RentFlow
               </h2>
               <p className="mt-3 text-sm font-medium text-emerald-700 dark:text-emerald-400">
                 Status: In Beta (Q3 2026)
@@ -93,7 +95,15 @@ export default function ProductsPage() {
                 <li>- Multi-tenant by design</li>
                 <li>- Blue-green deployment</li>
               </ul>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <TrackedExternalLink
+                  href={rentFlowOfficialUrl}
+                  className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600"
+                  eventName="rentflow_official_click"
+                  eventParams={{ location: "products_page_card" }}
+                >
+                  Official site: RentFlow.in →
+                </TrackedExternalLink>
                 <Link
                   href="/products/pg-management"
                   className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-200"
@@ -185,7 +195,7 @@ export default function ProductsPage() {
                       Metric
                     </th>
                     <th className="py-2 font-semibold text-slate-900 dark:text-slate-100">
-                      PG SaaS
+                      RentFlow
                     </th>
                     <th className="py-2 font-semibold text-slate-900 dark:text-slate-100">
                       Vulnerability AI

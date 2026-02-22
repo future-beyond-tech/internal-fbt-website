@@ -96,10 +96,10 @@ export async function POST(req: Request) {
       });
 
       if (!webhookResponse.ok) {
-        console.error("PG SaaS waitlist webhook failed:", webhookResponse.status);
+        console.error("RentFlow waitlist webhook failed:", webhookResponse.status);
       }
     } catch (error) {
-      console.error("PG SaaS waitlist webhook error:", error);
+      console.error("RentFlow waitlist webhook error:", error);
     }
   }
 
@@ -126,8 +126,8 @@ export async function POST(req: Request) {
           from: emailFrom,
           to: contactEmail,
           replyTo: sanitizeSingleLine(data.email),
-          subject: `New PG SaaS waitlist signup: ${sanitizeSingleLine(data.name)}`,
-          text: `PG SaaS Waitlist Signup
+          subject: `New RentFlow waitlist signup: ${sanitizeSingleLine(data.name)}`,
+          text: `RentFlow Waitlist Signup
 Name: ${sanitizeSingleLine(data.name)}
 Email: ${sanitizeSingleLine(data.email)}
 Phone: ${sanitizeSingleLine(data.phone)}
@@ -143,10 +143,10 @@ Source: /products/pg-management`,
       resend.emails.send({
         from: emailFrom,
         to: sanitizeSingleLine(data.email),
-        subject: "You're on the list: FBT PG SaaS Early Access",
+        subject: "You're on the list: RentFlow Early Access",
         text: `Hi ${sanitizeSingleLine(data.name)},
 
-You're on the list for FBT PG SaaS Platform early access.
+You're on the list for RentFlow early access.
 
 What to expect next:
 - We will share beta onboarding windows before public release.
@@ -165,7 +165,7 @@ If you have questions, reply to this email and our team will help.
 
     return NextResponse.json({ success: true }, { headers: responseHeaders });
   } catch (error) {
-    console.error("PG SaaS waitlist email error:", error);
+    console.error("RentFlow waitlist email error:", error);
     return NextResponse.json(
       { error: "Unable to submit right now. Please try again." },
       { status: 500, headers: responseHeaders }

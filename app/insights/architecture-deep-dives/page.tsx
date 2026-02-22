@@ -4,7 +4,7 @@ import { defaultMetadata } from "@/lib/seo";
 
 const deepDives = [
   {
-    title: "PG SaaS Platform Architecture",
+    title: "RentFlow Platform Architecture",
     description:
       "Clean Architecture, CQRS, multi-tenancy, and event-driven billing decisions.",
     href: "/products/pg-management#technical-architecture",

@@ -41,7 +41,7 @@ export default function ProductEngineeringServicePage() {
               development:
             </p>
             <ul className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-300 sm:text-base">
-              <li>FBT PG SaaS: multi-tenant from day one, Clean Architecture + CQRS, blue-green deployments</li>
+              <li>RentFlow: multi-tenant from day one, Clean Architecture + CQRS, blue-green deployments</li>
               <li>Vulnerability Assessment AI: microservices architecture, AI integration, Kubernetes orchestration, enterprise security posture</li>
             </ul>
             <p className="mt-4 text-sm text-slate-700 dark:text-slate-300 sm:text-base">

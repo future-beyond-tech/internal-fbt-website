@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
+import TrackedExternalLink from "@/components/TrackedExternalLink";
+import { rentFlowOfficialUrl } from "@/lib/siteConfig";
 
 export default function BuiltByTrustBar() {
   return (
@@ -23,7 +25,7 @@ export default function BuiltByTrustBar() {
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
               <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
                 <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                  FBT PG SaaS
+                  RentFlow
                 </p>
                 <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
                   50+ waitlist
@@ -31,6 +33,14 @@ export default function BuiltByTrustBar() {
                 <p className="mt-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
                   Beta Q3 2026
                 </p>
+                <TrackedExternalLink
+                  href={rentFlowOfficialUrl}
+                  className="mt-2 inline-block text-xs font-semibold text-emerald-700 hover:underline dark:text-emerald-400"
+                  eventName="rentflow_official_click"
+                  eventParams={{ location: "built_by_trust_bar" }}
+                >
+                  RentFlow.in →
+                </TrackedExternalLink>
               </article>
               <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
                 <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">

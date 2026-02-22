@@ -2,7 +2,7 @@ import Container from "@/components/layout/Container";
 
 const proofItems = [
   {
-    title: "FBT PG SaaS",
+    title: "RentFlow",
     points: [
       "50+ tenants on waitlist",
       "1,000+ beds modelled in architecture planning",

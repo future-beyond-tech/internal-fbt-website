@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Container from "./Container";
-import { siteConfig } from "@/lib/siteConfig";
+import { siteConfig, rentFlowOfficialUrl } from "@/lib/siteConfig";
 import TrackedExternalLink from "@/components/TrackedExternalLink";
 
 const companyLinks = [
@@ -28,9 +28,10 @@ const productCards = [
     status: "Security Expertise",
   },
   {
-    name: "PG Management SaaS",
+    name: "RentFlow",
     href: "/products/pg-management",
     status: "Beta Q3 2026",
+    officialSiteUrl: rentFlowOfficialUrl,
   },
   {
     name: "Vulnerability Assessment AI",
@@ -109,18 +110,32 @@ export default function Footer() {
             </p>
             <div className="mt-3 space-y-3">
               {productCards.map((item) => (
-                <Link
+                <div
                   key={item.name}
-                  href={item.href}
-                  className="block rounded-xl border border-slate-200 bg-white p-3 transition-colors hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-slate-600 dark:hover:bg-slate-800"
+                  className="rounded-xl border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900"
                 >
-                  <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                    {item.name}
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
-                    {item.status}
-                  </p>
-                </Link>
+                  <Link
+                    href={item.href}
+                    className="block transition-colors hover:opacity-90 focus-visible:rounded focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-slate-50"
+                  >
+                    <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                      {item.name}
+                    </p>
+                    <p className="mt-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                      {item.status}
+                    </p>
+                  </Link>
+                  {"officialSiteUrl" in item && item.officialSiteUrl && (
+                    <TrackedExternalLink
+                      href={item.officialSiteUrl}
+                      className="mt-2 inline-flex min-h-[36px] items-center text-xs font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
+                      eventName="rentflow_official_click"
+                      eventParams={{ location: "footer" }}
+                    >
+                      Official site: RentFlow.in →
+                    </TrackedExternalLink>
+                  )}
+                </div>
               ))}
             </div>
           </section>
