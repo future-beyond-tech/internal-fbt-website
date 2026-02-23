@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { defaultMetadata } from "@/lib/seo";
 import Container from "@/components/layout/Container";
 import ContactForm from "./ContactForm";
@@ -32,8 +33,10 @@ export default function ContactPage() {
                         </p>
                     </header>
 
-                    {/* Client Component */}
-                    <ContactForm />
+                    {/* Client Component: Suspense required for useSearchParams() */}
+                    <Suspense fallback={<div className="mt-8 min-h-[320px] animate-pulse rounded-lg bg-slate-100 dark:bg-slate-800" aria-hidden />}>
+                        <ContactForm />
+                    </Suspense>
 
                     <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-500 sm:mt-10">
                         Prefer email? Reach us at{" "}
