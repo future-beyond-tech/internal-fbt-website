@@ -10,7 +10,7 @@ type TeamMember = {
 const leadership: TeamMember[] = [
   {
     name: "Feroze Basha",
-    role: "Founder & Lead Software Engineer",
+    role: "Founder & CEO",
     bio: "Leads strategic and technical vision, specializing in .NET, microservices, enterprise architecture, and cloud-native systems.",
     linkedinUrl: "",
   },
@@ -18,6 +18,12 @@ const leadership: TeamMember[] = [
     name: "Gorantla Srikanth",
     role: "Chief Technology Officer",
     bio: "Oversees technical governance, architecture, code quality, and deployment strategy.",
+    linkedinUrl: "",
+  },
+  {
+    name: "Sheikh Alaudin",
+    role: "Chief Operating Officer",
+    bio: "Leads operations and execution at Future Beyond Tech, ensuring seamless project delivery, efficient processes, and high client satisfaction. Plays a key role in scaling operations, optimizing workflows, and driving organizational excellence.",
     linkedinUrl: "",
   },
 ];
@@ -81,7 +87,7 @@ export default function Team() {
             >
               Leadership
             </h3>
-            <div className="grid gap-5 sm:gap-6 md:grid-cols-2">
+            <div className="grid gap-5 sm:gap-6 md:grid-cols-3">
               {leadership.map((member) => (
                 <TeamCard key={member.name} member={member} />
               ))}

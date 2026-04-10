@@ -21,9 +21,16 @@ export const organizationAndServiceSchema = {
       "@type": "Person",
       "@id": `${siteConfig.url}#founder`,
       name: founderName,
-      jobTitle: "Founder",
+      jobTitle: "Founder & CEO",
       worksFor: { "@id": `${siteConfig.url}#organization` },
       url: siteConfig.url,
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteConfig.url}#coo`,
+      name: "Sheikh Alaudin",
+      jobTitle: "Chief Operating Officer",
+      worksFor: { "@id": `${siteConfig.url}#organization` },
     },
     {
       "@type": "SoftwareApplication",

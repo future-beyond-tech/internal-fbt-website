@@ -12,7 +12,7 @@ type Branch = {
 
 const founder: Person = {
   name: "Feroze Basha",
-  title: "Founder & Lead Software Engineer",
+  title: "Founder & CEO",
 };
 
 const branches: Branch[] = [
@@ -34,17 +34,19 @@ const branches: Branch[] = [
   },
   {
     manager: {
-      name: "Abdul Hameed",
-      title: "HR & Operations Manager",
+      name: "Sheikh Alaudin",
+      title: "Chief Operating Officer",
     },
-    reports: [],
-  },
-  {
-    manager: {
-      name: "Kohilavani",
-      title: "Marketing Executive",
-    },
-    reports: [],
+    reports: [
+      {
+        name: "Abdul Hameed",
+        title: "HR & Operations Manager",
+      },
+      {
+        name: "Kohilavani",
+        title: "Marketing Executive",
+      },
+    ],
   },
 ];
 
@@ -134,9 +136,9 @@ function DesktopChart() {
       </div>
 
       <div className="w-full">
-        <div className="mx-auto w-11/12 border-t border-slate-300 dark:border-slate-700 lg:w-4/5" />
+        <div className="mx-auto w-11/12 border-t border-slate-300 dark:border-slate-700 lg:w-3/5" />
 
-        <div className="mt-1 grid gap-12 lg:grid-cols-3 lg:gap-14">
+        <div className="mt-1 grid gap-12 lg:grid-cols-2 lg:gap-14">
           {branches.map((branch) => (
             <BranchColumn key={branch.manager.name} branch={branch} />
           ))}
